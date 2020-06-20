@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>blibli</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.8/lib/index.css" />
+
+
+  </head>
+  <body>
+    <style scoped="scoped">
+      .loading-first {
+        position: fixed;
+        display: block;
+        left: 0;
+        top: 0;
+        background: #1c92d2;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #f2fcfe, #1c92d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        /* 标准的语法（必须放在最后） */
+        width: 100%;
+        min-height: 100vh;
+        z-index: 99;
+      }
+
+      .bli {
+        position: absolute;
+        bottom: 10%;
+        left: 40%;
+        color: #E83E8C;
+      }
+
+      .bli1 {
+        position: absolute;
+        margin: 0;
+        top: 0;
+        color: #E83E8C;
+      }
+
+      .anim {
+        animation: scale .3s ease;
+      }
+
+      @keyframes scale {
+        0% {
+          transform: scale(2, 2);
+        }
+
+        100% {
+          transform: scale(1, 1);
+        }
+    </style>
+    <div class="loading-first">
+      <h1 class="bli">BliBli</h1>
+      <h3 class="bli1">本网页只是娱乐练习(╹ڡ╹ )不含有商业内容，里面目前只有看视频，听音乐，发说说等功能</h3>
+    </div>
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.8/lib/vant.min.js"></script>
+    <script>
+      const load = document.querySelectorAll('.loading-first')[0]
+
+      const body = document.querySelectorAll('body')[0]
+      let data = sessionStorage.getItem('loading-first');
+      document.onreadystatechange = function () {//即在加载的过程中执行下面的代码
+      	if(document.readyState=="complete"){//complete加载完成
+         setLoad(body,load)
+      	}
+      }
+      function setLoad(body, load) {
+        load.style.display = 'block';
+        setTimeout(() => {
+          load.style.display = 'none'
+          body.setAttribute('class', 'anim')
+        }, 100);
+
+      }
+    </script>
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+
+
+
+
+  </body>
+</html>
